@@ -4,7 +4,7 @@ class Problem_009_PalindromeNumber {
         while(x != 0){
             int digit = x % 10;
             
-            // 检查是否会溢出
+            // check for overflow before multiplying by 10 and adding the digit
             if (rev > Integer.MAX_VALUE / 10 || 
                 (rev == Integer.MAX_VALUE / 10 && digit > 7)) {
                 return 0;
@@ -17,12 +17,12 @@ class Problem_009_PalindromeNumber {
     }
 
     public boolean isPalindrome(int x) {
-        // 先检查特殊情况（负数和末尾为0的数）
+        // Handle negative numbers and numbers ending with 0 (except for 0 itself)
         if (x < 0 || (x % 10 == 0 && x != 0)) {
             return false;
         }
         
-        // 再进行反转和比较
+        // Reverse the number and check if it is equal to the original number
         int reversed = reverse(x);
         return reversed == x;
     }
